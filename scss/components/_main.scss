@@ -1,0 +1,189 @@
+@-moz-viewport { width: device-width; scale: 1; }
+@-ms-viewport { width: device-width; scale: 1; }
+@-o-viewport { width: device-width; scale: 1; }
+@-webkit-viewport { width: device-width; scale: 1; }
+@viewport { width: device-width; scale: 1; }
+
+html {
+	box-sizing: border-box;
+	-moz-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+}
+
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+
+body{
+  font-family: sans-serif;
+  @include zero;
+  // Hides close button if there is no js
+  &.noscript .close-btn,
+  &.noscript .toggle-btn{
+      display: none;
+  }
+}
+
+header {
+  padding: 0;
+  position: relative;
+  margin: 0;
+}
+
+img {
+ display: block;
+ width: 100%;
+
+}
+
+.logo {
+width: 30px;
+    float: left;
+    display: block;
+    margin: .2em 0 0 .2em;
+}
+
+  h1 {
+       position: absolute;
+      left: -300px;
+    }
+
+.toggle-btn,{
+    position: absolute;
+    right: 1em;
+    top: 0;
+}
+
+.navigation ul{
+    padding: 0;
+    li {
+        list-style: none;
+
+    }
+    
+    a {
+    text-decoration: none;
+        padding: 1.5em;
+        display: block;
+        border-bottom: 1px solid $light-grey;
+        color: $font-color;
+        text-align: left;
+        font-size: 2em;
+         &:hover {
+        background-color: red;
+        color: $text-color;
+        }
+
+    }
+}
+
+.toggle-btn,
+.close-btn{
+    color: $text-color;
+    height: 40px;
+    width: 40px;
+    text-decoration: none;
+    background-color:red;
+    display: block;
+    &:before{
+        display: inline-block;
+        padding: 13px 11px;
+        height: 40px;
+        width: 40px;
+    }
+    
+    span {
+    @include element-invisible;
+    }
+}
+
+/*sliding nav */
+
+//page shoul move when nav open 
+//thi is the only time you will ever use max-width gor a media query
+
+@media only screen and (max-width: 60em) {
+    .site-wrapper {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        z-index: 100;
+        
+        
+        .sliding-canvas {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform: translateX(0%);
+        transition: all 300ms cubic-bezier(.92,.06,.93,.51);
+        }
+    }
+    
+    &[data-state="slide-open"] .sliding-canvas{
+        transform: translateX(-100%);
+    }
+    
+    &[data-state="slide-open"] {
+        overflow: visible;
+    }
+
+//nav 
+
+    .navigation{ 
+        position: absolute;
+        width: 100%;
+        right: -100%;
+        top: 0;
+        bottom: 0;
+        height: 100%;
+        padding: 0;
+        min-height: 800px;
+        }
+    }
+
+//reset the page when desktop 
+
+@media only screen and (min-width: 60em) {
+    .toggle-btn,
+    .close-btn{
+        display: none;
+    }
+    
+    .logo {
+        width: 60px;
+    }
+    
+    .navigation ul{
+    padding: 0;
+    li {
+        list-style: none;
+    }
+    
+    a {
+    text-decoration: none;
+        padding: .5em 1em;
+        display: inline-block;
+        color: $font-color;
+        text-align: center;
+        float: right;
+        font-size: 2em;
+        border: none;
+         &:hover {
+        background-color: red;
+        }
+
+    }
+    }
+
+//show navigation on screen when there is no js 
+
+    body.noscript .navigation {
+        position: static;
+        right: auto;
+    }
+}
+    
