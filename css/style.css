@@ -1060,7 +1060,7 @@ html {
 }
 
 body {
-  font-family: sans-serif;
+  font-family: 'Lobster Two', cursive;
   margin: 0;
   padding: 0;
 }
@@ -1082,7 +1082,7 @@ img {
 }
 
 .logo {
-  width: 30px;
+  width: 31px;
   float: left;
   display: block;
   margin: .2em 0 0 .2em;
@@ -1095,7 +1095,7 @@ h1 {
 
 .toggle-btn {
   position: absolute;
-  right: 1em;
+  right: 0;
   top: 0;
 }
 
@@ -1116,6 +1116,16 @@ h1 {
   color: #000;
   text-align: left;
   font-size: 2em;
+  transition: all 300ms ease-in;
+  -webkit-transform: translateX(50%) .navigation ul a;
+      -ms-transform: translateX(50%) .navigation ul a;
+          transform: translateX(50%) .navigation ul a;
+}
+
+.navigation ul a :a {
+  -webkit-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+          transform: translateX(100%);
 }
 
 .navigation ul a:hover {
@@ -1193,7 +1203,7 @@ h1 {
     display: none;
   }
   .logo {
-    width: 60px;
+    width: 55px;
   }
   .navigation ul {
     padding: 0;
