@@ -60,6 +60,7 @@ width: 30px;
 
 .navigation ul{
     padding: 0;
+    margin: 0;
     li {
         list-style: none;
 
@@ -74,7 +75,7 @@ width: 30px;
         text-align: left;
         font-size: 2em;
          &:hover {
-        background-color: red;
+        background: red;
         color: $text-color;
         }
 

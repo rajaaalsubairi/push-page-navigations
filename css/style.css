@@ -1101,6 +1101,7 @@ h1 {
 
 .navigation ul {
   padding: 0;
+  margin: 0;
 }
 
 .navigation ul li {
@@ -1118,7 +1119,7 @@ h1 {
 }
 
 .navigation ul a:hover {
-  background-color: red;
+  background: red;
   color: #fff;
 }
 
